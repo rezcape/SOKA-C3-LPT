@@ -16,6 +16,23 @@ import org.cloudbus.cloudsim.DatacenterBroker;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.core.CloudSim;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import org.cloudbus.cloudsim.Datacenter;
+import org.cloudbus.cloudsim.DatacenterCharacteristics;
+import org.cloudbus.cloudsim.Host;
+import org.cloudbus.cloudsim.Pe;
+import org.cloudbus.cloudsim.Storage;
+import org.cloudbus.cloudsim.Vm;
+import org.cloudbus.cloudsim.VmAllocationPolicySimple;
+import org.cloudbus.cloudsim.VmSchedulerSpaceShared;
+import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
+import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
+import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
+
 
 
 /**
@@ -164,7 +181,8 @@ public class Main {
     private static Map<String, Double> runOne(String dataFile) throws Exception {
         CloudSim.init(1, Calendar.getInstance(), false);
 
-        new DatacenterFactory().createDatacenter();
+        Datacenter datacenter0 = new DatacenterFactory().createDatacenter("datacenter0");
+        Datacenter datacenter1 = new DatacenterFactory().createDatacenter("datacenter1");
         DatacenterBroker broker = new DatacenterBroker("Broker");
 
         List<Vm> vms = new VmFactory().createVms(broker);

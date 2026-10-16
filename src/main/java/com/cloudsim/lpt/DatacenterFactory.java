@@ -68,12 +68,10 @@ public class DatacenterFactory {
 
     /** Spesifikasi host: {core, MIPS/core, RAM MB, BW Mbps}. Dipakai untuk laporan alokasi. */
     public static int[] specOf(int hostId) {
-        return hostId < HIGH_GRADE_HOSTS
-                ? new int[]{8, 3_000, 32 * 1024, 10_000}
-                : new int[]{4, 1_500, 16 * 1024, 1_000};
+        return new int[]{16, 3_000, 64 * 1024, 10_000};
     }
 
-    public Datacenter createDatacenter() {
+    public Datacenter createDatacenter(String name) {
         PLACEMENT.clear();
         List<Host> hostList = new ArrayList<>();
 
@@ -114,13 +112,13 @@ public class DatacenterFactory {
         List<Storage> storageList = new LinkedList<>();
         try {
             return new Datacenter(
-                    "Datacenter_0",
+                    name,
                     characteristics,
                     new PlacementPolicy(hostList),
                     storageList,
                     0.0);
         } catch (Exception exception) {
-            throw new IllegalStateException("Unable to create Datacenter_0", exception);
+            throw new IllegalStateException("Unable to create " + name, exception);
         }
     }
 

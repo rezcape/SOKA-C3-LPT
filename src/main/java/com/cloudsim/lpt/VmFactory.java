@@ -9,9 +9,9 @@ import org.cloudbus.cloudsim.Vm;
 public class VmFactory {
 
     // Pembagian id VM (dipakai LptScheduler untuk menghitung biaya)
-    public static final int COMPUTE_COUNT = 10;   // id 0-9
-    public static final int STANDARD_COUNT = 20;  // id 10-29
-    public static final int LIGHT_COUNT = 10;     // id 30-39
+    public static final int COMPUTE_COUNT = 20;   // id 0-9
+    public static final int STANDARD_COUNT = 40;  // id 10-29
+    public static final int LIGHT_COUNT = 20;     // id 30-39
 
     // Bandwidth VM Standard. Di prompt awal 5000 Mbps, tapi host Standard
     // cuma 1000 Mbps dan total bandwidth tidak cukup, jadi sebagian VM gagal dibuat.
